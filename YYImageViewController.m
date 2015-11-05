@@ -129,7 +129,11 @@
     if (_currentCount <= _maxCount) {
         [_currentImageArray addObject:_allImageArray[indexPath.row]];
     }else{
-        NSLog(@"已达上限");
+        [[[UIAlertView alloc]initWithTitle:nil
+                            message:[NSString stringWithFormat:@"最多能选择 %ld 张图片",(long)_maxCount]
+                            delegate:nil
+                            cancelButtonTitle:@"确定"
+                            otherButtonTitles:nil, nil] show];
         _currentCount --;
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
         return;

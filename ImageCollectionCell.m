@@ -19,10 +19,10 @@
         
         _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _deleteButton.translatesAutoresizingMaskIntoConstraints = NO;
-        _deleteButton.backgroundColor = [UIColor lightGrayColor];
-        _deleteButton.layer.cornerRadius = 11.0f;
+        _deleteButton.layer.cornerRadius = 14.0f;
         _deleteButton.clipsToBounds = YES;
         [_deleteButton addTarget:self action:@selector(deleteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_deleteButton setBackgroundImage:[UIImage imageNamed:@"cancel1.png"] forState:UIControlStateNormal];
         [self.contentView addSubview:_deleteButton];
         
         [self.contentView addConstraint:[NSLayoutConstraint
@@ -58,12 +58,12 @@
                                          multiplier:1.0
                                          constant:0]];
         [self.contentView addConstraints:[NSLayoutConstraint
-                                          constraintsWithVisualFormat:@"H:[_deleteButton(==22)]-8-|"
+                                          constraintsWithVisualFormat:@"H:[_deleteButton(==28)]-4-|"
                                           options:1.0
                                           metrics:nil
                                           views:NSDictionaryOfVariableBindings(_deleteButton)]];
         [self.contentView addConstraints:[NSLayoutConstraint
-                                          constraintsWithVisualFormat:@"V:|-8-[_deleteButton(==22)]"
+                                          constraintsWithVisualFormat:@"V:|-4-[_deleteButton(==28)]"
                                           options:1.0
                                           metrics:nil
                                           views:NSDictionaryOfVariableBindings(_deleteButton)]];
