@@ -104,6 +104,8 @@
     YYImageViewController *imageViewController = [[YYImageViewController alloc]init];
     imageViewController.photoGroup = _photoAlbumGroupArray[indexPath.row];
     imageViewController.numberOfPhotoAblum = [_photoAlbumGroupArray[indexPath.row] numberOfAssets];
+    imageViewController.maxCount = _maxCount;
+    imageViewController.currentCount = _currentCount;
     imageViewController.popHandle = ^(YYImageViewController *viewController, NSArray *imageResults){
         [self dismissViewControllerAnimated:YES completion:nil];
         _dissmissHandle(self,imageResults);

@@ -125,10 +125,19 @@
 #pragma mark UICollectionViewDelegate -
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [_currentImageArray addObject:_allImageArray[indexPath.row]];
+    _currentCount ++;
+    if (_currentCount <= _maxCount) {
+        [_currentImageArray addObject:_allImageArray[indexPath.row]];
+    }else{
+        NSLog(@"已达上限");
+        _currentCount --;
+        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+        return;
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    _currentCount --;
     [_currentImageArray removeObject:_allImageArray[indexPath.row]];
 }
 

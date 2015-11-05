@@ -22,6 +22,11 @@ typedef void (^Dissmiss) (YYPhotoAlbumViewController *,NSArray *);
 @property (nonatomic, strong) UITableView            *photoAlbumTableView;
 /*!相册列表组*/
 @property (nonatomic, strong) NSMutableArray         *photoAlbumGroupArray;
+/*!当点击图片页面右上角的完成的时候，会回调并调用此回调*/
 @property (nonatomic, copy)   Dissmiss               dissmissHandle;
+/*!最多被选择的图片个数*/
+@property (nonatomic, assign) NSInteger              maxCount;
+/*!已被选出的图片个数*/
+@property (nonatomic, assign) NSInteger              currentCount;
 
 @end

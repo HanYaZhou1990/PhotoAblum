@@ -99,6 +99,8 @@
                 [myViewController.imageCollectionView reloadData];
             });
         };
+        photoAblum.maxCount = 9;
+        photoAblum.currentCount = [_images count];
         [self yyPresentViewController:photoAblum animated:YES completion:nil];
         }
             break;

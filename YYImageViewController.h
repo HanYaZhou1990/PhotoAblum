@@ -28,7 +28,11 @@ typedef void (^PopBack) (YYImageViewController *, NSArray *);
 @property (nonatomic, strong, readonly) NSMutableArray    *allImageArray;
 /*!被选择的图片数组*/
 @property (nonatomic, strong) NSMutableArray              *currentImageArray;
-
+/*!选择过图片以后，点击完成的回调*/
 @property (nonatomic, copy) PopBack                       popHandle;
+/*!最多被选择的图片个数*/
+@property (nonatomic, assign) NSInteger                   maxCount;
+/*!已被选出的图片个数*/
+@property (nonatomic, assign) NSInteger                   currentCount;
 
 @end
