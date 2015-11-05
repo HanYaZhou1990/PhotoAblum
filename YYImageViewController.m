@@ -19,6 +19,7 @@
 
 - (void)doneButtonItemClicked:(UIBarButtonItem *)buttonItem{
     [self.navigationController popViewControllerAnimated:NO];
+    _popHandle(self,_currentImageArray);
 }
 
 - (void)viewDidLoad{
@@ -27,6 +28,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *doneButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonItemClicked:)];
+    self.navigationItem.rightBarButtonItem = doneButtonItem;
     /*
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
     UIDeviceOrientation  orient = [UIDevice currentDevice].orientation;
@@ -88,13 +90,15 @@
                                      multiplier:1.0
                                      constant:0]];
     
-    _imageArray = [NSMutableArray array];
+    _allImageArray = [NSMutableArray array];
+    _currentImageArray = [NSMutableArray array];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
             [_photoGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                 if (result) {
-                    [_imageArray addObject:result];
-                    if ([_imageArray count] == _numberOfPhotoAblum) {
+                    [_allImageArray addObject:result];
+                    if ([_allImageArray count] == _numberOfPhotoAblum) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [_imageCollectionView reloadData];
                         });
@@ -108,11 +112,11 @@
 #pragma mark -
 #pragma mark UICollectionViewDataSource -
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [_imageArray count];
+    return [_allImageArray count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     YYImageCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell" forIndexPath:indexPath];
-    ALAsset *result = _imageArray[indexPath.row];
+    ALAsset *result = _allImageArray[indexPath.row];
     cell.backgroundImageView.image = [UIImage imageWithCGImage: result.thumbnail];
     return cell;
 }
@@ -121,7 +125,11 @@
 #pragma mark UICollectionViewDelegate -
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    [_currentImageArray addObject:_allImageArray[indexPath.row]];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [_currentImageArray removeObject:_allImageArray[indexPath.row]];
 }
 
 #pragma mark -

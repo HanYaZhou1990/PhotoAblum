@@ -10,16 +10,25 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "YYImageCollectionCell.h"
 
+@class YYImageViewController;
+
+typedef void (^PopBack) (YYImageViewController *, NSArray *);
+
 #define MAIN_WIDTH [[UIScreen mainScreen] bounds].size.width
 
 @interface YYImageViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 /*!相册*/
-@property (nonatomic, strong) ALAssetsGroup     *photoGroup;
+@property (nonatomic, strong) ALAssetsGroup               *photoGroup;
 /*!相册中图片的个数*/
-@property (nonatomic, assign) NSInteger         numberOfPhotoAblum;
+@property (nonatomic, assign) NSInteger                   numberOfPhotoAblum;
 /*!相册图片的展示*/
-@property (nonatomic, strong) UICollectionView  *imageCollectionView;
-@property (nonatomic, strong) NSMutableArray    *imageArray;
+@property (nonatomic, strong) UICollectionView            *imageCollectionView;
+/*!所有的图片的数组*/
+@property (nonatomic, strong, readonly) NSMutableArray    *allImageArray;
+/*!被选择的图片数组*/
+@property (nonatomic, strong) NSMutableArray              *currentImageArray;
+
+@property (nonatomic, copy) PopBack                       popHandle;
 
 @end

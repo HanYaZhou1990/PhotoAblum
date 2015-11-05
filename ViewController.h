@@ -7,17 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AssetsLibrary/AssetsLibrary.h>
-#import "YYPhotoAlbumCell.h"
-#import "YYImageViewController.h"
+#import "YYPhotoAlbumViewController.h"
+#import "UIViewController+Present.h"
+#import "ImageCollectionCell.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+/*由于模态弹出的页面没有上导航，所以写了两个解决方案
+ 1.#import "YYPresentViewController.h"
+ 然后把继承改为 YYPresentViewController
+ 2.#import "UIViewController+Present.h"
+ 使用 yyPresentViewController: animated: completion: 我修改过的方法进行模态弹出
+ */
 
-/*!相册列表*/
-@property (nonatomic, strong) UITableView            *photoAlbumTableView;
-/*!相册列表组*/
-@property (nonatomic, strong) NSMutableArray         *photoAlbumGroupArray;
-@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
+@interface ViewController : UIViewController<UIActionSheetDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
+/*!图片的展示*/
+@property (nonatomic, strong) UICollectionView            *imageCollectionView;
+@property (nonatomic, strong) NSMutableArray              *images;
 
 @end
 
