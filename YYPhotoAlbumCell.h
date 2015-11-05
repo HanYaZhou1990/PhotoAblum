@@ -12,7 +12,7 @@
 
 /*!相册封面图*/
 @property (nonatomic, strong) UIImageView    *groupImageView;
-/*!*/
+/*!相册的名字*/
 @property (nonatomic, strong) UILabel        *groupNameLable;
 /*!相册中的图片个数*/
 @property (nonatomic, strong) UILabel        *numberOfImageLable;

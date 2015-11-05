@@ -20,7 +20,7 @@ typedef void (^deleteButtonClicked) (ImageCollectionCell *, UIButton *);
 @property (nonatomic, strong, readonly) UIButton *deleteButton;
 /*!负责删除按钮的展示和隐藏*/
 @property (nonatomic, assign) BOOL               hiddenDeleteButton;
-
+/*!删除按钮被点击的回调*/
 @property (nonatomic, copy) deleteButtonClicked  deleteButtonHandle;
 
 @end

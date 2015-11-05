@@ -22,6 +22,7 @@
 
 /*!图片的展示*/
 @property (nonatomic, strong) UICollectionView            *imageCollectionView;
+/*!被选出来的图片*/
 @property (nonatomic, strong) NSMutableArray              *images;
 
 @end
