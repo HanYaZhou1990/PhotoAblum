@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "YYPhotoAlbumCell.h"
 #import "YYImageViewController.h"
-#import "ALAssetsLibrary+Share.h"
+#import "ALAssetsLibrary+Share.h"Pho
 
 @class YYPhotoAlbumViewController;
 

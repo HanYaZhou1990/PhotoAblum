@@ -139,6 +139,7 @@
 #pragma mark -
 #pragma mark UICollectionViewDelegate -
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ImageCollectionCell * cell = (ImageCollectionCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSLog(@"应该放大第%d张图,可是，不想写了",indexPath.row);
 }
 

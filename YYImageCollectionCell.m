@@ -19,7 +19,7 @@
         
         _selectedImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _selectedImageView.translatesAutoresizingMaskIntoConstraints = NO;
-        _selectedImageView.image = [UIImage imageNamed:@"3.png"];
+        _selectedImageView.image = [UIImage imageNamed:@"2.png"];
         [self.contentView addSubview:_selectedImageView];
         
         [self.contentView addConstraints:[NSLayoutConstraint
@@ -51,7 +51,7 @@
 
 - (void)setSelected:(BOOL)selected{
     [super setSelected:selected];
-    _selectedImageView.image = [UIImage imageNamed:selected?@"4.png":@"3.png"];
+    _selectedImageView.image = [UIImage imageNamed:selected?@"1.png":@"2.png"];
 }
 
 @end
