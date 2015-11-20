@@ -19,7 +19,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"拍照",@"相册",nil];
+                                                    otherButtonTitles:@"拍照",@"相册多选",@"相册单选",nil];
     [actionSheet showInView:self.view];
 }
 
@@ -105,6 +105,19 @@
         }
             break;
         case 2:
+        {
+        __block ViewController *myViewController = self;
+        YYPhotoAlbumViewController *photoAblum = [[YYPhotoAlbumViewController alloc]init];
+        photoAblum.dissmissHandle = ^(YYPhotoAlbumViewController *viewController,NSArray *imageResults){
+            [myViewController.images addObjectsFromArray:imageResults];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [myViewController.imageCollectionView reloadData];
+            });
+        };
+        photoAblum.maxCount = 9;
+        photoAblum.currentCount = [_images count];
+        [self yyPresentViewController:photoAblum animated:YES completion:nil];
+        }case 3:
         {
         
         }

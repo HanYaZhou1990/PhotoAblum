@@ -11,6 +11,12 @@
 
 @implementation YYPhotoAlbumViewController
 
+/*viewWillAppear
+ viewWillDisappear
+ reloadTableView三个方法没用 删除
+ */
+
+/*
 - (void)viewWillAppear:(BOOL)animated {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:ALAssetsLibraryChangedNotification object:nil];
@@ -31,7 +37,7 @@
     } failureBlock:^(NSError *error) {
         NSLog(@"Group not found!\n");
     }];
-}
+}*/
 
 - (void)cancleButtonItemClicked:(UIBarButtonItem *)item {
     [self dismissViewControllerAnimated:YES completion:nil];
